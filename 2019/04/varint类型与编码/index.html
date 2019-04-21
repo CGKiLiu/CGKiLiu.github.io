@@ -8,37 +8,35 @@
 <meta name="generator" content="Hugo 0.55.2 with theme Tranquilpeak 0.4.3-SNAPSHOT">
 <meta name="author" content="Ki Liu">
 <meta name="keywords" content="">
-<meta name="description" content="This post is used to show how a site looks if the pagination is hidden.">
+<meta name="description" content="levelDB VarInt类型与编码">
 
 
-<meta property="og:description" content="This post is used to show how a site looks if the pagination is hidden.">
+<meta property="og:description" content="levelDB VarInt类型与编码">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hidden pagination showcase">
-<meta name="twitter:title" content="Hidden pagination showcase">
-<meta property="og:url" content="https://cgkiliu.github.io/2014/08/hidden-pagination-showcase/">
-<meta property="twitter:url" content="https://cgkiliu.github.io/2014/08/hidden-pagination-showcase/">
+<meta property="og:title" content="VarInt类型与编码">
+<meta name="twitter:title" content="VarInt类型与编码">
+<meta property="og:url" content="https://cgkiliu.github.io/2019/04/varint%E7%B1%BB%E5%9E%8B%E4%B8%8E%E7%BC%96%E7%A0%81/">
+<meta property="twitter:url" content="https://cgkiliu.github.io/2019/04/varint%E7%B1%BB%E5%9E%8B%E4%B8%8E%E7%BC%96%E7%A0%81/">
 <meta property="og:site_name" content="KiLiu&#39;s Blog">
-<meta property="og:description" content="This post is used to show how a site looks if the pagination is hidden.">
-<meta name="twitter:description" content="This post is used to show how a site looks if the pagination is hidden.">
+<meta property="og:description" content="levelDB VarInt类型与编码">
+<meta name="twitter:description" content="levelDB VarInt类型与编码">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2014-08-15T00:00:00">
+    <meta property="article:published_time" content="2019-04-21T00:00:00">
   
   
-    <meta property="article:modified_time" content="2014-08-15T00:00:00">
+    <meta property="article:modified_time" content="2019-04-21T00:00:00">
   
   
   
     
-      <meta property="article:section" content="tranquilpeak">
-    
-      <meta property="article:section" content="features">
+      <meta property="article:section" content="levelDB">
     
   
   
     
-      <meta property="article:tag" content="pagination">
+      <meta property="article:tag" content="levelDB">
     
   
 
@@ -55,6 +53,9 @@
   <meta property="twitter:image" content="//d1u9biwaxjngwg.cloudfront.net/cover-image-showcase/city-750.jpg">
 
 
+  <meta property="og:image" content="//d1u9biwaxjngwg.cloudfront.net/cover-image-showcase/city.jpg">
+  <meta property="twitter:image" content="//d1u9biwaxjngwg.cloudfront.net/cover-image-showcase/city.jpg">
+
 
 
 
@@ -62,14 +63,14 @@
   <meta property="twitter:image" content="https://www.gravatar.com/avatar/b72319036b20cccf16999492917a73d3?s=640">
 
 
-    <title>Hidden pagination showcase</title>
+    <title>VarInt类型与编码</title>
 
     <link rel="icon" href="https://cgkiliu.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://cgkiliu.github.io/2014/08/hidden-pagination-showcase/">
+    <link rel="canonical" href="https://cgkiliu.github.io/2019/04/varint%E7%B1%BB%E5%9E%8B%E4%B8%8E%E7%BC%96%E7%A0%81/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -218,26 +219,34 @@
 </nav>
 
       
+  <div class="post-header-cover
+              text-center
+              "
+       style="background-image:url('//d1u9biwaxjngwg.cloudfront.net/cover-image-showcase/city.jpg')"
+       data-behavior="5">
+    
+  </div>
+
 
       <div id="main" data-behavior="5"
-        class="
-               hasCoverMetaIn
+        class="hasCover
+               hasCoverMetaOut
                ">
         <article class="post" itemscope itemType="http://schema.org/BlogPosting">
           
           
-            <div class="post-header main-content-wrap text-left">
+            <div class="post-header main-content-wrap text-center">
   
     <h1 class="post-title" itemprop="headline">
-      Hidden pagination showcase
+      VarInt类型与编码
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2014-08-15T00:00:00Z">
+      <time itemprop="datePublished" datetime="2019-04-21T00:00:00Z">
         
-  August 15, 2014
+  April 21, 2019
 
       </time>
     
@@ -246,9 +255,7 @@
   
     <span>in</span>
     
-      <a class="category-link" href="https://cgkiliu.github.io/categories/tranquilpeak">tranquilpeak</a>, 
-    
-      <a class="category-link" href="https://cgkiliu.github.io/categories/features">features</a>
+      <a class="category-link" href="https://cgkiliu.github.io/categories/leveldb">levelDB</a>
     
   
 
@@ -258,9 +265,32 @@
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>This post is used to show how a site looks if the pagination is hidden.</p>
+              <p>levelDB VarInt类型与编码</p>
 
-<p>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.</p>
+<h3 id="varint">VarInt</h3>
+
+<p>LevelDB内部通过采用变长编码，对数据进行压缩来减少存储空间，采用CRC进行数据正确性校验。
+<br>
+传统的integer是以32位来表示的，存储需要4个字节，当如果整数大小在256以内，那么只需要用一个字节就可以存储这个整数，这样就可以节省3个字节的存储空间，Google varint就是根据这种思想来序列化整数的</p>
+
+<p>无符号
+Varint 是一种紧凑的表示数字的方法。它用一个或多个字节来表示一个数字，值越小的数字使用越少的字节数。这能减少用来表示数字的字节数。</p>
+
+<p>Varint 中的每个 byte 的最高位 bit 有特殊的含义，如果该位为 1，表示后续的 byte 也是该数字的一部分，如果该位为 0，则结束。其他的 7 个 bit 都用来表示数字。因此小于 128 的数字都可以用一个 byte 表示。大于 128 的数字，会用两个字节。</p>
+
+<p>例如整数1的表示，仅需一个字节：</p>
+
+<p>0000 0001</p>
+
+<p>例如300的表示，需要两个字节：</p>
+
+<p>1010 1100 0000 0010</p>
+
+<p>采用 Varint，对于很小的 int32 类型的数字，则可以用 1 个 byte 来表示。当然凡事都有好的也有不好的一面，采用 Varint 表示法，大的数字则需要 5 个 byte 来表示。从统计的角度来说，一般不会所有的消息中的数字都是大数，因此大多数情况下，采用 Varint 后，可以用更少的字节数来表示数字信息。</p>
+
+<p>下图演示了 Google Protocol Buffer 如何解析两个 bytes。注意到最终计算前将两个 byte 的位置相互交换过一次，这是因为 Google Protocol Buffer 字节序采用 little-endian 的方式。</p>
+
+<p><img src="pictureVarInt.png" alt="VarInt" /></p>
               
             </div>
           </div>
@@ -272,7 +302,7 @@
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">TAGGED IN</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://cgkiliu.github.io/tags/pagination/">pagination</a>
+  <a class="tag tag--primary tag--small" href="https://cgkiliu.github.io/tags/leveldb/">levelDB</a>
 
                   </div>
                 
@@ -280,12 +310,12 @@
             
             <div class="post-actions-wrap">
   
-      <nav style="visibility: hidden">
+      <nav >
         <ul class="post-actions post-action-nav">
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://cgkiliu.github.io/2019/04/leveldb%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" data-tooltip="levelDB数据类型">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://cgkiliu.github.io/2019/04/reveal-cards-in-increasing-order/" data-tooltip="Reveal Cards In Increasing Order">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -293,7 +323,7 @@
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://cgkiliu.github.io/2019/04/leveldb%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" data-tooltip="levelDB数据类型">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -311,19 +341,19 @@
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://cgkiliu.github.io/2014/08/hidden-pagination-showcase/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://cgkiliu.github.io/2019/04/varint%E7%B1%BB%E5%9E%8B%E4%B8%8E%E7%BC%96%E7%A0%81/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://cgkiliu.github.io/2014/08/hidden-pagination-showcase/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://cgkiliu.github.io/2019/04/varint%E7%B1%BB%E5%9E%8B%E4%B8%8E%E7%BC%96%E7%A0%81/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://cgkiliu.github.io/2014/08/hidden-pagination-showcase/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://cgkiliu.github.io/2019/04/varint%E7%B1%BB%E5%9E%8B%E4%B8%8E%E7%BC%96%E7%A0%81/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -366,12 +396,12 @@
       <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
         <div class="post-actions-wrap">
   
-      <nav style="visibility: hidden">
+      <nav >
         <ul class="post-actions post-action-nav">
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://cgkiliu.github.io/2019/04/leveldb%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" data-tooltip="levelDB数据类型">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://cgkiliu.github.io/2019/04/reveal-cards-in-increasing-order/" data-tooltip="Reveal Cards In Increasing Order">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -379,7 +409,7 @@
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://cgkiliu.github.io/2019/04/leveldb%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" data-tooltip="levelDB数据类型">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -397,19 +427,19 @@
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://cgkiliu.github.io/2014/08/hidden-pagination-showcase/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://cgkiliu.github.io/2019/04/varint%E7%B1%BB%E5%9E%8B%E4%B8%8E%E7%BC%96%E7%A0%81/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://cgkiliu.github.io/2014/08/hidden-pagination-showcase/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://cgkiliu.github.io/2019/04/varint%E7%B1%BB%E5%9E%8B%E4%B8%8E%E7%BC%96%E7%A0%81/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://cgkiliu.github.io/2014/08/hidden-pagination-showcase/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://cgkiliu.github.io/2019/04/varint%E7%B1%BB%E5%9E%8B%E4%B8%8E%E7%BC%96%E7%A0%81/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -439,19 +469,19 @@
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcgkiliu.github.io%2F2014%2F08%2Fhidden-pagination-showcase%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcgkiliu.github.io%2F2019%2F04%2Fvarint%25E7%25B1%25BB%25E5%259E%258B%25E4%25B8%258E%25E7%25BC%2596%25E7%25A0%2581%2F">
           <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fcgkiliu.github.io%2F2014%2F08%2Fhidden-pagination-showcase%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fcgkiliu.github.io%2F2019%2F04%2Fvarint%25E7%25B1%25BB%25E5%259E%258B%25E4%25B8%258E%25E7%25BC%2596%25E7%25A0%2581%2F">
           <i class="fa fa-twitter"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fcgkiliu.github.io%2F2014%2F08%2Fhidden-pagination-showcase%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fcgkiliu.github.io%2F2019%2F04%2Fvarint%25E7%25B1%25BB%25E5%259E%258B%25E4%25B8%258E%25E7%25BC%2596%25E7%25A0%2581%2F">
           <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
         </a>
       </li>
@@ -639,9 +669,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'https:\/\/cgkiliu.github.io\/2014\/08\/hidden-pagination-showcase\/';
+          this.page.url = 'https:\/\/cgkiliu.github.io\/2019\/04\/varint%E7%B1%BB%E5%9E%8B%E4%B8%8E%E7%BC%96%E7%A0%81\/';
           
-            this.page.identifier = '\/2014\/08\/hidden-pagination-showcase\/'
+            this.page.identifier = '\/2019\/04\/varint%E7%B1%BB%E5%9E%8B%E4%B8%8E%E7%BC%96%E7%A0%81\/'
           
         };
         (function() {

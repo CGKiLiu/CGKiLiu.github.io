@@ -1,23 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>LeetCode题解 on Hugo tranquilpeak theme</title>
+    <title>LeetCode题解 on KiLiu&#39;s Blog</title>
     <link>https://cgkiliu.github.io/leetcode%E9%A2%98%E8%A7%A3/</link>
-    <description>Recent content in LeetCode题解 on Hugo tranquilpeak theme</description>
+    <description>Recent content in LeetCode题解 on KiLiu&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
 	<atom:link href="https://cgkiliu.github.io/leetcode%E9%A2%98%E8%A7%A3/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Reveal Cards In Increasing Order</title>
-      <link>https://cgkiliu.github.io/leetcode%E9%A2%98%E8%A7%A3/reveal_cards_in_increasing_order/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cgkiliu.github.io/leetcode%E9%A2%98%E8%A7%A3/reveal_cards_in_increasing_order/</guid>
-      <description>In a deck of cards, every card has a unique integer. You can order the deck in any order you want. Initially, all the cards start face down (unrevealed) in one deck. Now, you do the following steps repeatedly, until all cards are revealed: Take the top card of the deck, reveal it, and take it out of the deck. If there are still cards in the deck, put the next top card of the deck at the bottom of the deck.</description>
-    </item>
     
   </channel>
 </rss>
