@@ -47,7 +47,7 @@
   </url>
   
   <url>
-    <loc>https://cgkiliu.github.io/post/welcome-to-the-new-tranquilpeak/</loc>
+    <loc>https://cgkiliu.github.io/2015/06/welcome-to-tranquilpeak-0.4.4-beta/</loc>
     <lastmod>2015-06-15T00:00:00+00:00</lastmod>
   </url>
   
@@ -94,7 +94,7 @@
   </url>
   
   <url>
-    <loc>https://cgkiliu.github.io/post/who-is-using-tranquilpeak-hugo-theme/</loc>
+    <loc>https://cgkiliu.github.io/2015/06/who-is-using-tranquilpeak-hugo-theme/</loc>
     <lastmod>2015-06-14T00:00:00+00:00</lastmod>
   </url>
   
@@ -105,7 +105,7 @@
   </url>
   
   <url>
-    <loc>https://cgkiliu.github.io/post/elements-showcase/</loc>
+    <loc>https://cgkiliu.github.io/2015/05/elements-showcase/</loc>
     <lastmod>2015-05-28T00:00:00+00:00</lastmod>
   </url>
   
@@ -128,7 +128,7 @@
   </url>
   
   <url>
-    <loc>https://cgkiliu.github.io/post/cover-image-showcase/</loc>
+    <loc>https://cgkiliu.github.io/2015/05/cover-image-showcase/</loc>
     <lastmod>2015-05-13T00:00:00+00:00</lastmod>
   </url>
   
@@ -151,7 +151,7 @@
   </url>
   
   <url>
-    <loc>https://cgkiliu.github.io/post/highlighted-code-showcase/</loc>
+    <loc>https://cgkiliu.github.io/2015/03/highlighted-code-showcase/</loc>
     <lastmod>2015-03-23T00:00:00+00:00</lastmod>
   </url>
   
@@ -162,7 +162,7 @@
   </url>
   
   <url>
-    <loc>https://cgkiliu.github.io/post/tags-plugins-showcase/</loc>
+    <loc>https://cgkiliu.github.io/2014/10/tags-plugins-showcase/</loc>
     <lastmod>2014-10-29T00:00:00+00:00</lastmod>
   </url>
   
@@ -173,7 +173,7 @@
   </url>
   
   <url>
-    <loc>https://cgkiliu.github.io/post/hidden-social-section-showcase/</loc>
+    <loc>https://cgkiliu.github.io/2014/08/hidden-social-section-showcase/</loc>
     <lastmod>2014-08-17T00:00:00+00:00</lastmod>
   </url>
   
@@ -184,7 +184,7 @@
   </url>
   
   <url>
-    <loc>https://cgkiliu.github.io/post/hidden-tag-section-showcase/</loc>
+    <loc>https://cgkiliu.github.io/2014/08/hidden-tag-section-showcase/</loc>
     <lastmod>2014-08-16T00:00:00+00:00</lastmod>
   </url>
   
@@ -195,7 +195,7 @@
   </url>
   
   <url>
-    <loc>https://cgkiliu.github.io/post/hidden-pagination-showcase/</loc>
+    <loc>https://cgkiliu.github.io/2014/08/hidden-pagination-showcase/</loc>
     <lastmod>2014-08-15T00:00:00+00:00</lastmod>
   </url>
   
@@ -206,7 +206,7 @@
   </url>
   
   <url>
-    <loc>https://cgkiliu.github.io/post/video-integrations-showcase/</loc>
+    <loc>https://cgkiliu.github.io/2014/08/video-integrations-showcase/</loc>
     <lastmod>2014-08-09T00:00:00+00:00</lastmod>
   </url>
   
@@ -241,12 +241,12 @@
   </url>
   
   <url>
-    <loc>https://cgkiliu.github.io/post/chinese-test/</loc>
+    <loc>https://cgkiliu.github.io/2013/10/chinese-test/</loc>
     <lastmod>2013-10-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://cgkiliu.github.io/post/image-gallery-showcase/</loc>
+    <loc>https://cgkiliu.github.io/2013/02/image-gallery-showcase/</loc>
     <lastmod>2013-02-18T00:00:00+00:00</lastmod>
   </url>
   
@@ -263,8 +263,13 @@
   </url>
   
   <url>
-    <loc>https://cgkiliu.github.io/post/japanese-test/</loc>
+    <loc>https://cgkiliu.github.io/2013/01/japanese-test/</loc>
     <lastmod>2013-01-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cgkiliu.github.io/archives/</loc>
+    <priority>0</priority>
   </url>
   
 </urlset>
