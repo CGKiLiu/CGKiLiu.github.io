@@ -1,171 +1,132 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
   <head>
-    <title>DocDock Documentation</title>
     
-      <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-04-21T19:20:25 CST">
-<title>LevelDB数据类型 :: DocDock Documentation</title>
-<link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
-<link href="/css/font-awesome.min.css" rel="stylesheet">
-<link href="/css/nucleus.css" rel="stylesheet">
-<link href="/theme-flex/style.css" rel="stylesheet">
-
-	<link href="/theme-flex/variant-gray.css" rel="stylesheet">
-
-<link rel="stylesheet" href="/css/bootstrap.min.css">
-<script src="/js/jquery-2.x.min.js"></script>
-<script type="text/javascript">
-      var baseurl = "https:\/\/cgkiliu.github.io\/";
-</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.55.2 with theme Tranquilpeak 0.4.3-SNAPSHOT">
+<meta name="author" content="">
+<meta name="keywords" content="">
 <meta name="description" content="LevelDB数据类型">
 
 
+<meta property="og:description" content="LevelDB数据类型">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LevelDB数据类型">
+<meta name="twitter:title" content="LevelDB数据类型">
+<meta property="og:url" content="https://cgkiliu.github.io/levedb%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/leveldb%E5%90%84%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+<meta property="twitter:url" content="https://cgkiliu.github.io/levedb%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/leveldb%E5%90%84%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+<meta property="og:site_name" content="Hugo tranquilpeak theme">
+<meta property="og:description" content="LevelDB数据类型">
+<meta name="twitter:description" content="LevelDB数据类型">
+<meta property="og:locale" content="en-us">
 
+  
+  
+  
+  
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+
+
+
+
+
+    <title>LevelDB数据类型</title>
+
+    <link rel="icon" href="https://cgkiliu.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://cgkiliu.github.io/levedb%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/leveldb%E5%90%84%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://cgkiliu.github.io/css/style-nnm2spxvve8onlujjlegkkytaehyadd4ksxc1hyzzq9a2wvtrgbljqyulomn.min.css" />
+    
+    
+
+    
+      
+    
     
   </head>
-  <body data-url="/levedb%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/leveldb%E5%90%84%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
-    
-      <header>
-  <div class="logo">
-    
-	
-  
-    <a class="baselink" href="https://cgkiliu.github.io/">DocDock Documentation</a>
-  
 
-
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://cgkiliu.github.io/">Hugo tranquilpeak theme</a>
   </div>
-  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
-    <nav class="shortcuts">
-            <li class="" role="">
-                <a href="https://github.com/vjeantet/hugo-theme-docdock" target="_blank" rel="noopener">
-                  <i class='fa fa-github'></i> <label>Github repo</label>
-                </a>
-            </li>
-            <li class="" role="">
-                <a href="https://github.com/vjeantet/hugo-theme-docdock/archive/master.zip" target="_blank" rel="noopener">
-                  <i class='fa fa-cloud-download'></i> <label>Download</label>
-                </a>
-            </li>
-            <li class="" role="">
-                <a href="https://gohugo.io/" target="_blank" rel="noopener">
-                  <i class='fa fa-bookmark'></i> <label>Hugo Documentation</label>
-                </a>
-            </li>
-            <li class="" role="">
-                <a href="/credits" target="_blank" rel="noopener">
-                  <i class='fa fa-bullhorn'></i> <label>Credits</label>
-                </a>
-            </li>
-    </nav>
+  
 </header>
-<article>
-  <aside>
-    <ul class="menu">
-          <li data-nav-id="/" class="dd-item">
-          <a href="/">
-            <i class="fa fa-fw fa-home"></i>
-          </a>
-          </li>
-    <li data-nav-id="/leetcode%E9%A2%98%E8%A7%A3/" class="dd-item alwaysopen haschildren
-        ">
-      <div>
-      <a href="/leetcode%E9%A2%98%E8%A7%A3/">LeetCode题解</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
-      </div>
-        <ul>
-      <li data-nav-id="/leetcode%E9%A2%98%E8%A7%A3/reveal_cards_in_increasing_order/" class="dd-item">
-        <div>
-          <a href="/leetcode%E9%A2%98%E8%A7%A3/reveal_cards_in_increasing_order/">
-            Reveal Cards In Increasing Order
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/leetcode%E9%A2%98%E8%A7%A3/test/" class="dd-item">
-        <div>
-          <a href="/leetcode%E9%A2%98%E8%A7%A3/test/">
-            Reveal Cards In Increasing Order
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-        </ul>
-    </li>
-    <li data-nav-id="/levedb%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" class="dd-item parent alwaysopen haschildren
-        ">
-      <div>
-      <a href="/levedb%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/">LevelDB源码解析</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
-      </div>
-        <ul>
-      <li data-nav-id="/levedb%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/leveldb%E5%90%84%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="dd-item active">
-        <div>
-          <a href="/levedb%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/leveldb%E5%90%84%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
-            LevelDB数据类型
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/levedb%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/varint%E4%B8%8E%E7%BC%96%E7%A0%81/" class="dd-item">
-        <div>
-          <a href="/levedb%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/varint%E4%B8%8E%E7%BC%96%E7%A0%81/">
-            VarInt与编码
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-        </ul>
-    </li>
 
-
-
+      <nav id="sidebar" data-behavior="">
+  <div class="sidebar-container">
+    
+    <ul class="sidebar-buttons">
+      
 
     </ul>
-    <section>
-    </section>
-  </aside>
-  <section class="page">
-    
-    <div class="nav-select">
-      <center>Navigation : 
-        <select onchange="javascript:location.href = this.value;">
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior=""
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
           
-    <option value="/leetcode%E9%A2%98%E8%A7%A3/" >
-   LeetCode题解</option> 
-      <option value="/leetcode%E9%A2%98%E8%A7%A3/reveal_cards_in_increasing_order/" >- Reveal Cards In Increasing Order</option>
-      <option value="/leetcode%E9%A2%98%E8%A7%A3/test/" >- Reveal Cards In Increasing Order</option>
+          
+            <div class="post-header main-content-wrap text-left">
   
-    <option value="/levedb%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" >
-   LevelDB源码解析</option> 
-      <option value="/levedb%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/leveldb%E5%90%84%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"  selected>- LevelDB数据类型</option>
-      <option value="/levedb%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/varint%E4%B8%8E%E7%BC%96%E7%A0%81/" >- VarInt与编码</option>
+    <h1 class="post-title" itemprop="headline">
+      LevelDB数据类型
+    </h1>
   
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="0001-01-01T00:00:00Z">
+        
+  January 1, 1
 
+      </time>
+    
+    
+  </div>
 
-
-        </select>
-      </center>
-    </div>
-      <div>
-        <div class="searchbox">
-          <input data-search-input id="search-by" type="text" placeholder="Search...">
-        </div>
-        <script type="text/javascript" src="/js/lunr.min.js"></script>
-        <script type="text/javascript" src="/js/auto-complete.js"></script>
-        <link href="/css/auto-complete.css" rel="stylesheet">
-        <script type="text/javascript">
+</div>
           
-              var baseurl = "https:\/\/cgkiliu.github.io\/";
-          
-        </script>
-        <script type="text/javascript" src="/js/search.js"></script>
-      </div>
-    
-
-    <h1>LevelDB数据类型</h1>
-    
-    
-    
-    
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              
 
 <ul>
 <li><a href="#sequencenumber"><strong>SequenceNumber</strong></a>
@@ -192,16 +153,19 @@
 
 <li><p>将sequence和ValueType封装在一起</p></li>
 </ul>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#00a8c8">static</span> <span style="color:#111">uint64_t</span> <span style="color:#75af00">PackSequenceAndType</span><span style="color:#111">(</span><span style="color:#111">uint64_t</span> <span style="color:#111">seq</span><span style="color:#111">,</span> <span style="color:#111">ValueType</span> <span style="color:#111">t</span><span style="color:#111">)</span> <span style="color:#111">{</span>
-  <span style="color:#111">assert</span><span style="color:#111">(</span><span style="color:#111">seq</span> <span style="color:#f92672">&lt;=</span> <span style="color:#111">kMaxSequenceNumber</span><span style="color:#111">);</span>
-  <span style="color:#111">assert</span><span style="color:#111">(</span><span style="color:#111">t</span> <span style="color:#f92672">&lt;=</span> <span style="color:#111">kValueTypeForSeek</span><span style="color:#111">);</span>
-  <span style="color:#00a8c8">return</span> <span style="color:#111">(</span><span style="color:#111">seq</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">8</span><span style="color:#111">)</span> <span style="color:#f92672">|</span> <span style="color:#111">t</span><span style="color:#111">;</span>  <span style="color:#75715e">//seq左移8位，留下8位放type，总共64位
-</span><span style="color:#75715e"></span><span style="color:#111">}</span>
-<span style="color:#75715e">// We leave eight bits empty at the bottom so a type and sequence#
-</span><span style="color:#75715e">// can be packed together into 64-bits.
-</span><span style="color:#75715e">// sequence最大值，前56位全是1
-</span><span style="color:#75715e"></span><span style="color:#00a8c8">static</span> <span style="color:#00a8c8">const</span> <span style="color:#111">SequenceNumber</span> <span style="color:#111">kMaxSequenceNumber</span> <span style="color:#f92672">=</span> <span style="color:#111">((</span><span style="color:#ae81ff">0x1ull</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">56</span><span style="color:#111">)</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span><span style="color:#111">);</span>
-</code></pre></div>
+
+<pre><code class="language-C++">static uint64_t PackSequenceAndType(uint64_t seq, ValueType t) {
+  assert(seq &lt;= kMaxSequenceNumber);
+  assert(t &lt;= kValueTypeForSeek);
+  return (seq &lt;&lt; 8) | t;  //seq左移8位，留下8位放type，总共64位
+}
+// We leave eight bits empty at the bottom so a type and sequence#
+// can be packed together into 64-bits.
+// sequence最大值，前56位全是1
+static const SequenceNumber kMaxSequenceNumber = ((0x1ull &lt;&lt; 56) - 1);
+
+</code></pre>
+
 <h3 id="sequence">sequence</h3>
 
 <p><code>sequence 为全局自增序列号，LevelDB 遇到一个修改操作，全局序列号自动加一。LevelDB 中的 Key 存储了多个版本的 Value。LevelDB 使用序列号来标记键值对的版本，序列号越大，对应的键值对越新。</code></p>
@@ -209,12 +173,14 @@
 <h3 id="valuetype">ValueType</h3>
 
 <p><code>ValueType用来表示该键的类型，是一个要被删除的键，还是一个插入或查询的键</code></p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#00a8c8">enum</span> <span style="color:#111">ValueType</span> <span style="color:#111">{</span>
-  <span style="color:#111">kTypeDeletion</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x0</span><span style="color:#111">,</span>
-  <span style="color:#111">kTypeValue</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x1</span>
-<span style="color:#111">};</span>
-<span style="color:#00a8c8">static</span> <span style="color:#00a8c8">const</span> <span style="color:#111">ValueType</span> <span style="color:#111">kValueTypeForSeek</span> <span style="color:#f92672">=</span> <span style="color:#111">kTypeValue</span><span style="color:#111">;</span>
-</code></pre></div>
+
+<pre><code class="language-C++">enum ValueType {
+  kTypeDeletion = 0x0,
+  kTypeValue = 0x1
+};
+static const ValueType kValueTypeForSeek = kTypeValue;
+</code></pre>
+
 <h2 id="键"><strong>键</strong></h2>
 
 <h3 id="user-key"><strong>user_key</strong></h3>
@@ -229,17 +195,19 @@
 <h3 id="parsedinternalkey">ParsedInternalKey</h3>
 
 <p>是InternalKey的辅助数据结构，用来帮助解析InternalKey，其声明如下：</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#00a8c8">struct</span> <span style="color:#111">ParsedInternalKey</span> <span style="color:#111">{</span>
-  <span style="color:#111">Slice</span> <span style="color:#111">user_key</span><span style="color:#111">;</span>
-  <span style="color:#111">SequenceNumber</span> <span style="color:#111">sequence</span><span style="color:#111">;</span>
-  <span style="color:#111">ValueType</span> <span style="color:#111">type</span><span style="color:#111">;</span>
 
-  <span style="color:#111">ParsedInternalKey</span><span style="color:#111">()</span> <span style="color:#111">{</span> <span style="color:#111">}</span>  <span style="color:#75715e">// Intentionally left uninitialized (for speed)
-</span><span style="color:#75715e"></span>  <span style="color:#111">ParsedInternalKey</span><span style="color:#111">(</span><span style="color:#00a8c8">const</span> <span style="color:#111">Slice</span><span style="color:#f92672">&amp;</span> <span style="color:#111">u</span><span style="color:#111">,</span> <span style="color:#00a8c8">const</span> <span style="color:#111">SequenceNumber</span><span style="color:#f92672">&amp;</span> <span style="color:#111">seq</span><span style="color:#111">,</span> <span style="color:#111">ValueType</span> <span style="color:#111">t</span><span style="color:#111">)</span>
-      <span style="color:#f92672">:</span> <span style="color:#111">user_key</span><span style="color:#111">(</span><span style="color:#111">u</span><span style="color:#111">),</span> <span style="color:#111">sequence</span><span style="color:#111">(</span><span style="color:#111">seq</span><span style="color:#111">),</span> <span style="color:#111">type</span><span style="color:#111">(</span><span style="color:#111">t</span><span style="color:#111">)</span> <span style="color:#111">{</span> <span style="color:#111">}</span>
-  <span style="color:#111">std</span><span style="color:#f92672">::</span><span style="color:#111">string</span> <span style="color:#111">DebugString</span><span style="color:#111">()</span> <span style="color:#00a8c8">const</span><span style="color:#111">;</span>
-<span style="color:#111">};</span>
-</code></pre></div>
+<pre><code class="language-C++">struct ParsedInternalKey {
+  Slice user_key;
+  SequenceNumber sequence;
+  ValueType type;
+
+  ParsedInternalKey() { }  // Intentionally left uninitialized (for speed)
+  ParsedInternalKey(const Slice&amp; u, const SequenceNumber&amp; seq, ValueType t)
+      : user_key(u), sequence(seq), type(t) { }
+  std::string DebugString() const;
+};
+</code></pre>
+
 <h3 id="lookupkey">LookupKey</h3>
 
 <p>同样是一个辅助</p>
@@ -257,63 +225,243 @@ skipList中Key是对用户键值的封装形成的:
 其中：internal_key_size和value_size的数据类型都是VarInt
 </code></pre>
 
-
-    
-    
-        <div class="chevrons">
-    <div id="navigation">
-<a class="nav nav-prev" href="/levedb%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" title="LevelDB源码解析"> <i class="fa fa-chevron-left"></i><label>LevelDB源码解析</label></a>
-    <a class="nav nav-next" href="/levedb%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/varint%E4%B8%8E%E7%BC%96%E7%A0%81/" title="VarInt与编码" style="margin-right: 0px;"><label>VarInt与编码</label><i class="fa fa-chevron-right"></i></a></div>
-  </div>
-
-  </section>
-</article>
-
-<footer>
-
-<div class="footline">
-    
-
-    
-
-    
-
-    
-    <div class="github-link">
-      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/LeveDB%e6%ba%90%e7%a0%81%e8%a7%a3%e6%9e%90/levelDB%e5%90%84%e7%a7%8d%e6%95%b0%e6%8d%ae%e7%b1%bb%e5%9e%8b.md" target="blank"><i class="fa fa-code-fork"></i>
-        Improve this page</a>
-    </div>
-    
-  </div>
-
-
-	<div>
-
-
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+            
+            <div class="post-actions-wrap">
   
-    Create a content/_footer.md file to customize the footer content
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://cgkiliu.github.io/levedb%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/varint%E4%B8%8E%E7%BC%96%E7%A0%81/" data-tooltip="VarInt与编码">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
   
+</div>
 
-
-
-	</div>
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2019 Hugo tranquilpeak theme. All Rights Reserved
+  </span>
 </footer>
 
-<script src="/js/clipboard.min.js"></script>
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://cgkiliu.github.io/levedb%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/varint%E4%B8%8E%E7%BC%96%E7%A0%81/" data-tooltip="VarInt与编码">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
 
-<link href="/css/featherlight.min.css" rel="stylesheet">
-<script src="/js/featherlight.min.js"></script>
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+    <h4 id="about-card-name"></h4>
+    
+    
+    
+  </div>
+</div>
 
-
-
-<script src="/theme-flex/script.js"></script>
-
-
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="Search" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center">no post found</div>
+      <div class="results">
+        
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero="no post found"
+         data-message-one="1 post found"
+         data-message-other="{n} posts found">
+         0 posts found
+      </p>
+    </div>
+  </div>
+</div>
     
 
     
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://cgkiliu.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+
+  
     
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/cgkiliu.github.io\/levedb%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90\/leveldb%E5%90%84%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B\/';
+          
+            this.page.identifier = '\/levedb%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90\/leveldb%E5%90%84%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'hugo-tranquilpeak-theme';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
 
     
   </body>
 </html>
+

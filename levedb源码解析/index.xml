@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>LevelDB源码解析 on DocDock Documentation</title>
+    <title>LevelDB源码解析 on Hugo tranquilpeak theme</title>
     <link>https://cgkiliu.github.io/levedb%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</link>
-    <description>Recent content in LevelDB源码解析 on DocDock Documentation</description>
+    <description>Recent content in LevelDB源码解析 on Hugo tranquilpeak theme</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     

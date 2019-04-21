@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Test slice on DocDock Documentation</title>
+    <title>Test slice on Hugo tranquilpeak theme</title>
     <link>https://cgkiliu.github.io/</link>
-    <description>Recent content in Test slice on DocDock Documentation</description>
+    <description>Recent content in Test slice on Hugo tranquilpeak theme</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
@@ -29,15 +29,6 @@ SequenceNumber SequenceNumber是一个无符号的64位整数类型，其高56�
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://cgkiliu.github.io/leetcode%E9%A2%98%E8%A7%A3/reveal_cards_in_increasing_order/</guid>
-      <description>In a deck of cards, every card has a unique integer. You can order the deck in any order you want. Initially, all the cards start face down (unrevealed) in one deck. Now, you do the following steps repeatedly, until all cards are revealed: Take the top card of the deck, reveal it, and take it out of the deck. If there are still cards in the deck, put the next top card of the deck at the bottom of the deck.</description>
-    </item>
-    
-    <item>
-      <title>Reveal Cards In Increasing Order</title>
-      <link>https://cgkiliu.github.io/leetcode%E9%A2%98%E8%A7%A3/test/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cgkiliu.github.io/leetcode%E9%A2%98%E8%A7%A3/test/</guid>
       <description>In a deck of cards, every card has a unique integer. You can order the deck in any order you want. Initially, all the cards start face down (unrevealed) in one deck. Now, you do the following steps repeatedly, until all cards are revealed: Take the top card of the deck, reveal it, and take it out of the deck. If there are still cards in the deck, put the next top card of the deck at the bottom of the deck.</description>
     </item>
     
