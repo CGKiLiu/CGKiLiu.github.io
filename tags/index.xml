@@ -12,6 +12,24 @@
     
     
     <item>
+      <title>Array</title>
+      <link>https://cgkiliu.github.io/tags/array/</link>
+      <pubDate>Sun, 21 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://cgkiliu.github.io/tags/array/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Data Struct</title>
+      <link>https://cgkiliu.github.io/tags/data-struct/</link>
+      <pubDate>Sun, 21 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://cgkiliu.github.io/tags/data-struct/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>LeetCode</title>
       <link>https://cgkiliu.github.io/tags/leetcode/</link>
       <pubDate>Sun, 21 Apr 2019 00:00:00 +0000</pubDate>
@@ -30,11 +48,20 @@
     </item>
     
     <item>
-      <title>pagination</title>
-      <link>https://cgkiliu.github.io/tags/pagination/</link>
-      <pubDate>Fri, 15 Aug 2014 00:00:00 +0000</pubDate>
+      <title>html elements</title>
+      <link>https://cgkiliu.github.io/tags/html-elements/</link>
+      <pubDate>Thu, 28 May 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://cgkiliu.github.io/tags/pagination/</guid>
+      <guid>https://cgkiliu.github.io/tags/html-elements/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>markdown</title>
+      <link>https://cgkiliu.github.io/tags/markdown/</link>
+      <pubDate>Thu, 28 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://cgkiliu.github.io/tags/markdown/</guid>
       <description></description>
     </item>
     
