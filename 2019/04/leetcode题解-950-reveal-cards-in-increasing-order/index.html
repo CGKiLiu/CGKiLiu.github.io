@@ -8,18 +8,18 @@
 <meta name="generator" content="Hugo 0.55.2 with theme Tranquilpeak 0.4.3-SNAPSHOT">
 <meta name="author" content="Ki Liu">
 <meta name="keywords" content="">
-<meta name="description" content="levelDB数据类型">
+<meta name="description" content="[leetcode题解] 950 Reveal Cards In Increasing Order">
 
 
-<meta property="og:description" content="levelDB数据类型">
+<meta property="og:description" content="[leetcode题解] 950 Reveal Cards In Increasing Order">
 <meta property="og:type" content="article">
-<meta property="og:title" content="levelDB数据类型">
-<meta name="twitter:title" content="levelDB数据类型">
-<meta property="og:url" content="https://cgkiliu.github.io/2019/04/leveldb%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
-<meta property="twitter:url" content="https://cgkiliu.github.io/2019/04/leveldb%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+<meta property="og:title" content="[leetcode题解] 950 Reveal Cards In Increasing Order">
+<meta name="twitter:title" content="[leetcode题解] 950 Reveal Cards In Increasing Order">
+<meta property="og:url" content="https://cgkiliu.github.io/2019/04/leetcode%E9%A2%98%E8%A7%A3-950-reveal-cards-in-increasing-order/">
+<meta property="twitter:url" content="https://cgkiliu.github.io/2019/04/leetcode%E9%A2%98%E8%A7%A3-950-reveal-cards-in-increasing-order/">
 <meta property="og:site_name" content="KiLiu&#39;s Blog">
-<meta property="og:description" content="levelDB数据类型">
-<meta name="twitter:description" content="levelDB数据类型">
+<meta property="og:description" content="[leetcode题解] 950 Reveal Cards In Increasing Order">
+<meta name="twitter:description" content="[leetcode题解] 950 Reveal Cards In Increasing Order">
 <meta property="og:locale" content="en-us">
 
   
@@ -31,12 +31,16 @@
   
   
     
-      <meta property="article:section" content="levelDB">
+      <meta property="article:section" content="LeetCode题解">
     
   
   
     
-      <meta property="article:tag" content="levelDB">
+      <meta property="article:tag" content="LeetCode">
+    
+      <meta property="article:tag" content="Array">
+    
+      <meta property="article:tag" content="Data Struct">
     
   
 
@@ -57,14 +61,14 @@
   <meta property="twitter:image" content="https://www.gravatar.com/avatar/b72319036b20cccf16999492917a73d3?s=640">
 
 
-    <title>levelDB数据类型</title>
+    <title>[leetcode题解] 950 Reveal Cards In Increasing Order</title>
 
     <link rel="icon" href="https://cgkiliu.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://cgkiliu.github.io/2019/04/leveldb%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+    <link rel="canonical" href="https://cgkiliu.github.io/2019/04/leetcode%E9%A2%98%E8%A7%A3-950-reveal-cards-in-increasing-order/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -224,7 +228,7 @@
             <div class="post-header main-content-wrap text-center">
   
     <h1 class="post-title" itemprop="headline">
-      levelDB数据类型
+      [leetcode题解] 950 Reveal Cards In Increasing Order
     </h1>
   
   
@@ -241,7 +245,7 @@
   
     <span>in</span>
     
-      <a class="category-link" href="https://cgkiliu.github.io/categories/leveldb">levelDB</a>
+      <a class="category-link" href="https://cgkiliu.github.io/categories/leetcode%e9%a2%98%e8%a7%a3">LeetCode题解</a>
     
   
 
@@ -251,105 +255,67 @@
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>levelDB数据类型</p>
+              <p>[leetcode题解] <a href="https://leetcode.com/problems/reveal-cards-in-increasing-order/">950 Reveal Cards In Increasing Order</a></p>
 
-<p>#//www.jianguoyun.com/c/tblv2/CNmwGhiLjr4HIgwvbGV2ZWxEQi5wbmcoAQ/62MKOrQnpYw/l</p>
+<pre><code>In a deck of cards, every card has a unique integer.  You can order the deck in any order you want.
 
-<ul>
-<li><a href="#sequencenumber"><strong>SequenceNumber</strong></a>
+Initially, all the cards start face down (unrevealed) in one deck.
 
-<ul>
-<li><a href="#sequence">sequence</a></li>
-<li><a href="#valuetype">ValueType</a></li>
-</ul></li>
+Now, you do the following steps repeatedly, until all cards are revealed:
 
-<li><p><a href="#%E9%94%AE"><strong>键</strong></a></p>
+Take the top card of the deck, reveal it, and take it out of the deck.
+If there are still cards in the deck, put the next top card of the deck at the bottom of the deck.
+If there are still unrevealed cards, go back to step 1.  Otherwise, stop.
+Return an ordering of the deck that would reveal the cards in increasing order.
 
-<ul>
-<li><a href="#userkey"><strong>user_key</strong></a></li>
-<li><a href="#internalkey">InternalKey</a></li>
-<li><a href="#parsedinternalkey">ParsedInternalKey</a></li>
-<li><a href="#lookupkey">LookupKey</a></li>
-
-<li><p><a href="#memtable%E5%92%8C%E8%B7%B3%E8%B7%83%E8%A1%A8%E4%B8%AD%E5%AD%98%E5%82%A8%E7%9A%84key">memtable和跳跃表中存储的Key</a></p>
-
-<h2 id="sequencenumber"><strong>SequenceNumber</strong></h2>
-
-<p><code>SequenceNumber是一个无符号的64位整数类型，其高56位用来表示sequence，低8位用来表示ValueType</code></p></li>
-</ul></li>
-
-<li><p>将sequence和ValueType封装在一起</p></li>
-</ul>
-
-<pre><code class="language-C++">static uint64_t PackSequenceAndType(uint64_t seq, ValueType t) {
-  assert(seq &lt;= kMaxSequenceNumber);
-  assert(t &lt;= kValueTypeForSeek);
-  return (seq &lt;&lt; 8) | t;  //seq左移8位，留下8位放type，总共64位
-}
-// We leave eight bits empty at the bottom so a type and sequence#
-// can be packed together into 64-bits.
-// sequence最大值，前56位全是1
-static const SequenceNumber kMaxSequenceNumber = ((0x1ull &lt;&lt; 56) - 1);
-
+The first entry in the answer is considered to be the top of the deck.
 </code></pre>
 
-<h3 id="sequence">sequence</h3>
-
-<p><code>sequence 为全局自增序列号，LevelDB 遇到一个修改操作，全局序列号自动加一。LevelDB 中的 Key 存储了多个版本的 Value。LevelDB 使用序列号来标记键值对的版本，序列号越大，对应的键值对越新。</code></p>
-
-<h3 id="valuetype">ValueType</h3>
-
-<p><code>ValueType用来表示该键的类型，是一个要被删除的键，还是一个插入或查询的键</code></p>
-
-<pre><code class="language-C++">enum ValueType {
-  kTypeDeletion = 0x0,
-  kTypeValue = 0x1
-};
-static const ValueType kValueTypeForSeek = kTypeValue;
-</code></pre>
-
-<h2 id="键"><strong>键</strong></h2>
-
-<h3 id="user-key"><strong>user_key</strong></h3>
-
-<p>user_key是levelDB用来表示用户插入或查询时使用的键值对中键的概念数据类型，对应于<code>DB::Put(key, value)</code>中的<code>key</code>,在levelDB中，用Slice数据类型来实际表示user_key</p>
-
-<h3 id="internalkey">InternalKey</h3>
-
-<p>InternalKey是memtable内部使用的键，InternalKey由三部分组成：
-&gt;   <code>InteralKey = User_key + Sequence+ ValueType</code></p>
-
-<h3 id="parsedinternalkey">ParsedInternalKey</h3>
-
-<p>是InternalKey的辅助数据结构，用来帮助解析InternalKey，其声明如下：</p>
-
-<pre><code class="language-C++">struct ParsedInternalKey {
-  Slice user_key;
-  SequenceNumber sequence;
-  ValueType type;
-
-  ParsedInternalKey() { }  // Intentionally left uninitialized (for speed)
-  ParsedInternalKey(const Slice&amp; u, const SequenceNumber&amp; seq, ValueType t)
-      : user_key(u), sequence(seq), type(t) { }
-  std::string DebugString() const;
-};
-</code></pre>
-
-<h3 id="lookupkey">LookupKey</h3>
-
-<p>同样是一个辅助</p>
-
-<h3 id="memtable和跳跃表中存储的key">memtable和跳跃表中存储的Key</h3>
+<h3 id="题目大意">题目大意</h3>
 
 <blockquote>
-<pre><code>leveldb中memtable实际上是对skipList的一个封装，也就是内存中，真正存储用户键值的数据结构是skipList。
-skipList中Key是对用户键值的封装形成的:  
-</code></pre>
+<p>对于给定的一幅牌，每张牌上的数字都是不同的，我们可以对这副牌进行任意的排序，要求排完序后的这副牌满足以下操作：
+1. 每次从牌堆顶部取走一张牌
+2. 如果此时牌堆还有牌，将此时牌堆顶部的牌放置在牌堆底
+3. 重复上述两步操作直到所有牌被取完
+要求：按取走次序排列这副牌，上面的数字刚好是按序递增的<br />
+Example:</p>
+
+<p>Input: [17,13,11,2,3,5,7]
+Output: [2,13,3,11,5,17,7]</p>
 </blockquote>
 
-<pre><code>[ Key = internal_key_size + internal_key + value_size + value ]
+<h3 id="解题思路">解题思路：</h3>
 
-其中：internal_key_size和value_size的数据类型都是VarInt
+<p>可以用一个队列来模拟取牌的过程，首先在队列中放入0~n-1的数字，数字i表示初始位置i，然后用队列模拟题目当中的操作， 第k次从队列中取出i表示，第k个取走的牌，它的初始位置是i。同时，题目要求取走的牌递增，那么首先对牌堆进行排序，每次从队列中取出一个位置i的时候，相应的从排好序的牌堆里取出牌k。</p>
+
+<p>复杂度：排序:O(nlogn)   取牌：O(n)</p>
+
+<h3 id="代码">代码</h3>
+
+<pre><code class="language-Go">import(
+    &quot;sort&quot;
+)
+func deckRevealedIncreasing(deck []int) []int {
+    sizeOfDeck := len(deck)
+    queue := make(chan int, sizeOfDeck)
+    for i:= 0; i &lt; sizeOfDeck; i++{
+        queue &lt;- i
+    }
+    
+    sort.Ints(deck)
+    ans := make([]int, sizeOfDeck)
+    //从牌堆取牌的同时，取一个序号
+    for _, num := range deck{
+        idx := &lt;-queue
+        ans[idx] = num
+        if len(queue) &gt; 0{
+            fir := &lt;-queue
+            queue &lt;- fir
+        }
+    }
+    return ans
+}
 </code></pre>
               
             </div>
@@ -362,7 +328,11 @@ skipList中Key是对用户键值的封装形成的:
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">TAGGED IN</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://cgkiliu.github.io/tags/leveldb/">levelDB</a>
+  <a class="tag tag--primary tag--small" href="https://cgkiliu.github.io/tags/leetcode/">LeetCode</a>
+
+  <a class="tag tag--primary tag--small" href="https://cgkiliu.github.io/tags/array/">Array</a>
+
+  <a class="tag tag--primary tag--small" href="https://cgkiliu.github.io/tags/data-struct/">Data Struct</a>
 
                   </div>
                 
@@ -370,12 +340,12 @@ skipList中Key是对用户键值的封装形成的:
             
             <div class="post-actions-wrap">
   
-      <nav style="visibility: hidden">
+      <nav >
         <ul class="post-actions post-action-nav">
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://cgkiliu.github.io/2019/04/leetcode%E9%A2%98%E8%A7%A3-950-reveal-cards-in-increasing-order/" data-tooltip="[leetcode题解] 950 Reveal Cards In Increasing Order">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://cgkiliu.github.io/2019/04/varint%E7%B1%BB%E5%9E%8B%E4%B8%8E%E7%BC%96%E7%A0%81/" data-tooltip="VarInt类型与编码">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -383,7 +353,7 @@ skipList中Key是对用户键值的封装形成的:
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://cgkiliu.github.io/2015/05/elements-showcase/" data-tooltip="Elements showcase">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://cgkiliu.github.io/2019/04/leveldb%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" data-tooltip="levelDB数据类型">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -401,19 +371,19 @@ skipList中Key是对用户键值的封装形成的:
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://cgkiliu.github.io/2019/04/leveldb%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://cgkiliu.github.io/2019/04/leetcode%E9%A2%98%E8%A7%A3-950-reveal-cards-in-increasing-order/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://cgkiliu.github.io/2019/04/leveldb%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://cgkiliu.github.io/2019/04/leetcode%E9%A2%98%E8%A7%A3-950-reveal-cards-in-increasing-order/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://cgkiliu.github.io/2019/04/leveldb%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://cgkiliu.github.io/2019/04/leetcode%E9%A2%98%E8%A7%A3-950-reveal-cards-in-increasing-order/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -456,12 +426,12 @@ skipList中Key是对用户键值的封装形成的:
       <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
         <div class="post-actions-wrap">
   
-      <nav style="visibility: hidden">
+      <nav >
         <ul class="post-actions post-action-nav">
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://cgkiliu.github.io/2019/04/leetcode%E9%A2%98%E8%A7%A3-950-reveal-cards-in-increasing-order/" data-tooltip="[leetcode题解] 950 Reveal Cards In Increasing Order">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://cgkiliu.github.io/2019/04/varint%E7%B1%BB%E5%9E%8B%E4%B8%8E%E7%BC%96%E7%A0%81/" data-tooltip="VarInt类型与编码">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -469,7 +439,7 @@ skipList中Key是对用户键值的封装形成的:
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://cgkiliu.github.io/2015/05/elements-showcase/" data-tooltip="Elements showcase">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://cgkiliu.github.io/2019/04/leveldb%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" data-tooltip="levelDB数据类型">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -487,19 +457,19 @@ skipList中Key是对用户键值的封装形成的:
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://cgkiliu.github.io/2019/04/leveldb%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://cgkiliu.github.io/2019/04/leetcode%E9%A2%98%E8%A7%A3-950-reveal-cards-in-increasing-order/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://cgkiliu.github.io/2019/04/leveldb%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://cgkiliu.github.io/2019/04/leetcode%E9%A2%98%E8%A7%A3-950-reveal-cards-in-increasing-order/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://cgkiliu.github.io/2019/04/leveldb%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://cgkiliu.github.io/2019/04/leetcode%E9%A2%98%E8%A7%A3-950-reveal-cards-in-increasing-order/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -529,19 +499,19 @@ skipList中Key是对用户键值的封装形成的:
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcgkiliu.github.io%2F2019%2F04%2Fleveldb%25E6%2595%25B0%25E6%258D%25AE%25E7%25B1%25BB%25E5%259E%258B%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcgkiliu.github.io%2F2019%2F04%2Fleetcode%25E9%25A2%2598%25E8%25A7%25A3-950-reveal-cards-in-increasing-order%2F">
           <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fcgkiliu.github.io%2F2019%2F04%2Fleveldb%25E6%2595%25B0%25E6%258D%25AE%25E7%25B1%25BB%25E5%259E%258B%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fcgkiliu.github.io%2F2019%2F04%2Fleetcode%25E9%25A2%2598%25E8%25A7%25A3-950-reveal-cards-in-increasing-order%2F">
           <i class="fa fa-twitter"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fcgkiliu.github.io%2F2019%2F04%2Fleveldb%25E6%2595%25B0%25E6%258D%25AE%25E7%25B1%25BB%25E5%259E%258B%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fcgkiliu.github.io%2F2019%2F04%2Fleetcode%25E9%25A2%2598%25E8%25A7%25A3-950-reveal-cards-in-increasing-order%2F">
           <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
         </a>
       </li>
@@ -746,9 +716,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'https:\/\/cgkiliu.github.io\/2019\/04\/leveldb%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B\/';
+          this.page.url = 'https:\/\/cgkiliu.github.io\/2019\/04\/leetcode%E9%A2%98%E8%A7%A3-950-reveal-cards-in-increasing-order\/';
           
-            this.page.identifier = '\/2019\/04\/leveldb%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B\/'
+            this.page.identifier = '\/2019\/04\/leetcode%E9%A2%98%E8%A7%A3-950-reveal-cards-in-increasing-order\/'
           
         };
         (function() {

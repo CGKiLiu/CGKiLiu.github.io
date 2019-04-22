@@ -6,18 +6,18 @@
     <description>Recent content in Posts on KiLiu&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 21 Apr 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 22 Apr 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://cgkiliu.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Reveal Cards In Increasing Order</title>
-      <link>https://cgkiliu.github.io/2019/04/reveal-cards-in-increasing-order/</link>
-      <pubDate>Sun, 21 Apr 2019 00:00:00 +0000</pubDate>
+      <title>[leetcode题解] 1024.Video Stitching</title>
+      <link>https://cgkiliu.github.io/2019/04/leetcode%E9%A2%98%E8%A7%A3-1024.video-stitching/</link>
+      <pubDate>Mon, 22 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://cgkiliu.github.io/2019/04/reveal-cards-in-increasing-order/</guid>
-      <description>&lt;p&gt;950 Reveal Cards In Increasing Order&lt;/p&gt;</description>
+      <guid>https://cgkiliu.github.io/2019/04/leetcode%E9%A2%98%E8%A7%A3-1024.video-stitching/</guid>
+      <description>&lt;p&gt;[leetcode题解] &lt;a href=&#34;https://leetcode.com/problems/video-stitching/&#34;&gt;1024.Video Stitching&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -27,6 +27,15 @@
       
       <guid>https://cgkiliu.github.io/2019/04/varint%E7%B1%BB%E5%9E%8B%E4%B8%8E%E7%BC%96%E7%A0%81/</guid>
       <description>&lt;p&gt;levelDB VarInt类型与编码&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>[leetcode题解] 950 Reveal Cards In Increasing Order</title>
+      <link>https://cgkiliu.github.io/2019/04/leetcode%E9%A2%98%E8%A7%A3-950-reveal-cards-in-increasing-order/</link>
+      <pubDate>Sun, 21 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://cgkiliu.github.io/2019/04/leetcode%E9%A2%98%E8%A7%A3-950-reveal-cards-in-increasing-order/</guid>
+      <description>&lt;p&gt;[leetcode题解] &lt;a href=&#34;https://leetcode.com/problems/reveal-cards-in-increasing-order/&#34;&gt;950 Reveal Cards In Increasing Order&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>

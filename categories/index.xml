@@ -6,17 +6,17 @@
     <description>Recent content in Categories on KiLiu&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 21 Apr 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 22 Apr 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://cgkiliu.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>LeetCode解题报告</title>
-      <link>https://cgkiliu.github.io/categories/leetcode%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/</link>
-      <pubDate>Sun, 21 Apr 2019 00:00:00 +0000</pubDate>
+      <title>LeetCode题解</title>
+      <link>https://cgkiliu.github.io/categories/leetcode%E9%A2%98%E8%A7%A3/</link>
+      <pubDate>Mon, 22 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://cgkiliu.github.io/categories/leetcode%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/</guid>
+      <guid>https://cgkiliu.github.io/categories/leetcode%E9%A2%98%E8%A7%A3/</guid>
       <description></description>
     </item>
     

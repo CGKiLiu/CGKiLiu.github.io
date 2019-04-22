@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>LeetCode on KiLiu&#39;s Blog</title>
-    <link>https://cgkiliu.github.io/tags/leetcode/</link>
-    <description>Recent content in LeetCode on KiLiu&#39;s Blog</description>
+    <title>LeetCode题解 on KiLiu&#39;s Blog</title>
+    <link>https://cgkiliu.github.io/categories/leetcode%E9%A2%98%E8%A7%A3/</link>
+    <description>Recent content in LeetCode题解 on KiLiu&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 22 Apr 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://cgkiliu.github.io/tags/leetcode/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cgkiliu.github.io/categories/leetcode%E9%A2%98%E8%A7%A3/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
